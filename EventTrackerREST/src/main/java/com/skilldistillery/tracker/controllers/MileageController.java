@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,8 +28,13 @@ public class MileageController {
 	}
 	
 	@RequestMapping(path = "allMileage", method = RequestMethod.GET)
-	public List<Mileage> index(){
+	public List<Mileage> getMileageRecords(){
 		return mileageDAO.getMileageRecords();
+	}
+	
+	@RequestMapping(path = "mileage/{id}", method = RequestMethod.GET)
+	public Mileage getMileageById(@PathVariable int id) {
+		return mileageDAO.getMileageById(id);
 	}
 	
 	@RequestMapping(path ="mileage", method = RequestMethod.POST)
@@ -40,6 +46,27 @@ public class MileageController {
 		}
 		response.setStatus(500);
 		return null;
+	}
+	
+	@RequestMapping(path = "mileage/{id}", method = RequestMethod.PUT)
+	public Mileage replaceOldMileage(@RequestBody String mileageJson, @PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		return mileageDAO.replaceMileageRecord(mileageJson, id);
+	}
+	
+	@RequestMapping(path = "mileage/{id}", method = RequestMethod.PATCH)
+	public Mileage updateOldMileage(@RequestBody String mileageJson, @PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		return mileageDAO.updateMileageRecord(mileageJson, id);
+	}
+	
+	@RequestMapping(path = "mileage/{id}", method = RequestMethod.DELETE)
+	public String deleteMileageRecord(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		
+		if(mileageDAO.deleteMileage(id)) {
+			return "Mileage record was deleted";
+		}
+		else {
+			return "Mileage record delete failed";
+		}
 	}
 
 }

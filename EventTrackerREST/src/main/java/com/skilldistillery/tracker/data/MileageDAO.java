@@ -10,6 +10,6 @@ public interface MileageDAO {
 	public Mileage createMileageRecord(Mileage mileage);
 	public Mileage replaceMileageRecord(String mileageJson, int id);
 	public Mileage updateMileageRecord(String mileageJson, int id);
-	public boolean deletePost(int id);
+	public boolean deleteMileage(int id);
 
 }

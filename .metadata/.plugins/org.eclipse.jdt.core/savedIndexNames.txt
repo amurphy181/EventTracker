@@ -79,7 +79,6 @@ INDEX VERSION 1.130+/Users/alexmurphy/SD/Java/EventTrackerWorkspace/.metadata/.p
 2104471285.index
 788484298.index
 3879168684.index
-1020263682.index
 331111217.index
 3901819799.index
 2359427954.index

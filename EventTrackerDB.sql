@@ -40,3 +40,14 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `trackerdb`.* TO 'alex'@'
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `trackerdb`.`Mileage`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `trackerdb`;
+INSERT INTO `trackerdb`.`Mileage` (`id`, `distance`, `gallons_used`, `mpg`) VALUES (1, 315, 12.85, 24.514);
+INSERT INTO `trackerdb`.`Mileage` (`id`, `distance`, `gallons_used`, `mpg`) VALUES (2, 400, 14.5, 27.586);
+INSERT INTO `trackerdb`.`Mileage` (`id`, `distance`, `gallons_used`, `mpg`) VALUES (3, 386, 14.1, 27.38);
+
+COMMIT;
